@@ -1,0 +1,33 @@
+//css属性书写顺序
+//  位置属性(position, top, right, z-index, display, float等)
+//  大小(width, height, padding, margin)
+//  文字系列(font, line-height, letter-spacing, color , text-align等)
+//  背景(background, border等)
+//  其他(animation, transition等)
+
+//config 有_的scss样式文件代表无法被编译为css文件，只能作为导入使用，且导入时无需添加_
+@import 'variables';
+
+//layout
+@import 'reboot';
+
+//mixin
+@import 'mixin';
+
+//animation
+@import 'animation';
+
+//Button
+@import '../components/Button/style';
+
+//Alert
+@import '../components/Alert/style';
+
+//menu
+@import '../components/Menu/style';
+
+//tabs
+@import '../components/Tabs/style';
+
+//icon
+@import '../components/Icon/style';

@@ -1,0 +1,53 @@
+.tabs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  border-bottom: $tabs-nav-border-width solid $gray-300;
+}
+
+.tabs-nav-item {
+  display: block;
+  padding: $tabs-nav-item-padding-y $tabs-nav-item-padding-x;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    color: $primary;
+  }
+  &.disabled {
+    color: $secondary;
+    pointer-events: none;
+    cursor: default;
+    background-color: transparent;
+    border-color: transparent;
+  }
+  &.is-active {
+    color: $primary;
+  }
+}
+
+.nav-line {
+  .tabs-nav-item {
+    &.is-active {
+      border-bottom: $nav-line-active-border-width solid $primary;
+    }
+  }
+}
+
+.nav-card {
+  .tabs-nav-item {
+    border: $tabs-nav-border-width solid transparent;
+    margin-bottom: -1px;
+    &.is-active {
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: $border-radius;
+      background-color: $white;
+      border-color: $gray-300 $gray-300 $white;
+    }
+  }
+}
+
+.tabs-content {
+  margin-top: 1rem;
+}

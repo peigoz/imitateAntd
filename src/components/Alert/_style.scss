@@ -1,0 +1,59 @@
+.alert {
+  position: relative;
+  padding: $alert-padding-y $alert-padding-x;
+  margin-bottom: 1rem;
+  border: $alert-border-width solid transparent;
+  border-radius: $border-radius;
+  &.alert-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: $alert-padding-y $alert-padding-x;
+    color: inherit;
+    cursor: pointer;
+  }
+  &.bold-title {
+    font-weight: $font-weight-bold;
+  }
+  &.alert-desc {
+    font-size: $alert-desc-font-size;
+    margin: 0.3rem 0 0;
+  }
+}
+// .alert-default {
+//   color: #fff;
+//   background: #0d6efd;
+//   border-color: #0262ef;
+// }
+
+// .alert-success {
+//   color: #fff;
+//   background: #52c41a;
+//   border-color: #49ad17;
+// }
+
+// .alert-warning {
+//   color: #fff;
+//   background: #fadb14;
+//   border-color: #efd005;
+// }
+
+// .alert-danger {
+//   color: #fff;
+//   background: #dc3545;
+//   border-color: #d32535;
+// }
+
+.alert-default {
+  @include alert-style($white, $primary, $alert-default-border-color);
+}
+.alert-success {
+  @include alert-style($white, $success, $alert-success-border-color);
+}
+
+.alert-warning {
+  @include alert-style($white, $warning, $alert-warning-border-color);
+}
+.alert-danger {
+  @include alert-style($white, $danger, $alert-danger-border-color);
+}
