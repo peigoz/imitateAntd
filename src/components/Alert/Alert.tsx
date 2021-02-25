@@ -47,7 +47,7 @@ const Alert: React.FC<AlertProps> = props => {
     //     </div>
     //   )}
     // </Fragment>
-    <Transition in={alertShow} animation='zoom-in-left' timeout={500}>
+    <Transition in={alertShow} animation='zoom-in-left' timeout={500} unmountOnExit>
       <div className={classes} data-testid='test-alert'>
         <div>{title}</div>
         <div>{description}</div>

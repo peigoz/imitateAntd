@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useRef } from 'react'
 import classNames from 'classnames'
 import { MenuItemProps } from './MenuItem'
 
@@ -27,6 +27,7 @@ const Menu: React.FC<MenuProps> = props => {
     'menu-vertical': mode === 'vertical',
     'menu-horizontal': mode !== 'vertical',
   })
+  const menuRef = useRef<HTMLUListElement>(null)
   const handleClick = (index: string) => {
     setActive(index)
     onSelect && onSelect(index)
@@ -49,7 +50,7 @@ const Menu: React.FC<MenuProps> = props => {
     })
   }
   return (
-    <ul className={classes} style={style} data-testid='test-menu'>
+    <ul className={classes} style={style} data-testid='test-menu' ref={menuRef}>
       <MenuContext.Provider value={passedContext}>{renderChildren()}</MenuContext.Provider>
     </ul>
   )

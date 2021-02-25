@@ -1,21 +1,32 @@
 import React from 'react'
 import { render, fireEvent, RenderResult } from '@testing-library/react'
 import Alert, { AlertProps } from './Alert'
+
+jest.mock('../Icon/Icon', () => {
+  return () => {
+    return <i className='fa' />
+  }
+})
+jest.mock('react-transition-group', () => {
+  return {
+    CSSTransition: (props: any) => {
+      return props.children
+    },
+  }
+})
 const testProps: AlertProps = {
   title: 'test title',
   description: 'test description',
   type: 'danger',
   onClose: jest.fn(),
 }
-let wrapper: RenderResult,alertElement:HTMLElement, closeElement: HTMLElement
+let wrapper: RenderResult, alertElement: HTMLElement
 describe('test Alert Component', () => {
   beforeEach(() => {
     wrapper = render(<Alert {...testProps}></Alert>)
-    
-    alertElement = wrapper.getByTestId('test-alert')
-    closeElement = wrapper.getByText('关闭')
   })
   it('should render correct Alert component', () => {
+    alertElement = wrapper.getByTestId('test-alert')
     expect(alertElement).toBeInTheDocument()
     expect(alertElement.tagName).toEqual('DIV')
     expect(alertElement).toHaveClass('alert alert-danger')
@@ -27,9 +38,10 @@ describe('test Alert Component', () => {
     // expect(titleElement.tagName).toEqual('DIV')
     // expect(descElement.tagName).toEqual('DIV')
   })
-  it('click close should close Alert and correct call back', () => {
+  it('click close should close Alert and correct call back', async () => {
+    const closeElement = wrapper.container.querySelector('.alert.alert-close') as HTMLDivElement
     fireEvent.click(closeElement)
     expect(testProps.onClose).toHaveBeenCalled()
-    expect(alertElement).not.toBeInTheDocument()
+    // await waitFor(() => expect(closeElement).not.toBeVisible())
   })
 })
