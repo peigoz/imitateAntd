@@ -117,7 +117,7 @@ const Upload: React.FC<UploadProps> = props => {
       raw: file,
     }
     //setState是一个异步过程，...fileList时可能上一次setState还没完成，此时会导致fileList为[]对象
-    // setFileList([_file, ...fileList])
+    // setFileList([_file, ...fileList]) 
     setFileList(prevList => {
       return [_file, ...prevList]
     })
