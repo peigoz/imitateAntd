@@ -64,7 +64,7 @@ describe('test should component', () => {
     expect(uploadArea).not.toHaveClass('is-dragover')
     const mockDropEvent = createEvent.drop(uploadArea)
 
-    //失败，需要自定义事件
+    //失败，需要自定义事件 
     // fireEvent.dragOver(uploadArea, { dataTransfer: { files: [testFile] } })
     Object.defineProperty(mockDropEvent, 'dataTransfer', {
       value: {
